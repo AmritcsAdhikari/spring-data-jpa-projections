@@ -16,7 +16,7 @@ interface.
 
 `Step 3:` Use that child Interface as ReturnType for findBy() findBy methods.
 
-
+---
 
 `main` branch - 
 
