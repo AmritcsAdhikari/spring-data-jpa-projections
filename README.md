@@ -27,4 +27,7 @@ interface.
 
 ### Eaxmple `static-interface branch` 
 
+`main` branch - 
+
+Query - `select p1_0.product_id,p1_0.product_code,p1_0.product_name,p1_0.product_price from product p1_0 where p1_0.product_code=?`
 
