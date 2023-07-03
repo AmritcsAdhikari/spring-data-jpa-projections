@@ -2,9 +2,11 @@ package com.amrit.app.runner;
 
 import com.amrit.app.entity.Product;
 import com.amrit.app.repo.ProductRepository;
+import com.amrit.app.repo.ProductRepository.MyView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +30,7 @@ public class MyRunner implements CommandLineRunner {
         );
         repo.saveAll(list);
 
-        List<Product> b = repo.findByProductCode("B");
-        b.forEach(System.out::println);
+        List<MyView> b = repo.findByProductCode("B");
+        b.forEach(p-> System.out.println(p.getProductId() + " " + p.getProductCode()+ p.getProductName()));
     }
 }
