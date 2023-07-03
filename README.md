@@ -28,3 +28,5 @@ Query Fired- `select p1_0.product_id,p1_0.product_name,p1_0.product_code from pr
 `dynamic-interface` branch - `Dynamic Projection`
 
 Query Fired- `select p1_0.product_name,p1_0.product_price from product p1_0 where p1_0.product_code=?`
+
+---
