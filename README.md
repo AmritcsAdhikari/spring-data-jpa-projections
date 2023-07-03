@@ -2,28 +2,27 @@
 
 ---
 
-## Static Projections
-- This concept is used for always fixed types of columns selection
-  for multiple runs (or calls).
+## Dynamic Projections
+- In this case findBy(___) method return type is decided at runtime (i.e It is Generics).
 
-### How to implement ?
-
-`Step 1:`  Define one child interface (inner interface) in Repository interface with any
-name.OR Create one public interface & use that inside RepositoryInterface as DataType.
-
-`Step 2:` Copy getter method (getMethods()) from model class to child
-interface.
-
-`Step 3:` Use that child Interface as ReturnType for findBy() findBy methods.
+### Syntax ?
+```agsl
+    <T> List<T> findBy___(...,Class<T>clz);
+```
+***Note**> `T` is the child interface Type, provided at runtime.
 
 
 
-`main` branch - 
+---
+`main` branch - `No Projection`
 
-Query - `select p1_0.product_id,p1_0.product_code,p1_0.product_name,p1_0.product_price from product p1_0 where p1_0.product_code=?`
+Query Fired- `select p1_0.product_id,p1_0.product_code,p1_0.product_name,p1_0.product_price from product p1_0 where p1_0.product_code=?`
 
 ---
 
-`static-interface` branch - 
+`static-interface` branch - `Static Projection`
 
-Query - `select p1_0.product_id,p1_0.product_name,p1_0.product_code from product p1_0 where p1_0.product_code=?`
+Query Fired- `select p1_0.product_id,p1_0.product_name,p1_0.product_code from product p1_0 where p1_0.product_code=?`
+
+`dynamic-interface` branch - `Dynamic Projection`
+Query Fired- `select p1_0.product_name,p1_0.product_price from product p1_0 where p1_0.product_code=?`

@@ -8,28 +8,27 @@ import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product,Integer> {
 
-    /*
-    * --- No Projections---
-    * select p1_0.product_id,p1_0.product_code,p1_0.product_name,p1_0.product_price from product p1_0 where p1_0.product_code=?
-    * */
-    // List<Product> findByProductCode(String prodCode);
-
     interface MyView{
         // copy from getter method (ReturnType and methodName())
         Integer getProductId();
         String getProductName();
         String getProductCode();
     }
+    interface MyViewTwo{
+        // copy from getter method (ReturnType and methodName())
+        String getProductName();
+        String getProductPrice();
+    }
 
     /*
      * --- No Projections---
-     * select p1_0.product_id,p1_0.product_code,p1_0.product_name,p1_0.product_price from product p1_0 where p1_0.product_code=?
-     * */
-    // List<Product> findByProductCode(String prodCode);
+    List<Product> findByProductCode(String prodCode); */
 
     /*
-     * --- Static Projections---
-     * select p1_0.product_id,p1_0.product_code,p1_0.product_name,p1_0.product_price from product p1_0 where p1_0.product_code=?
-     * */
+     * --- Static Projections---*/
     List<MyView> findByProductCode(String prodCode);
+
+    /*
+     * --- Dynamic Projections---*/
+    <T> List<T> findByProductCode(String prodCode, Class<T>clz);
 }

@@ -3,6 +3,7 @@ package com.amrit.app.runner;
 import com.amrit.app.entity.Product;
 import com.amrit.app.repo.ProductRepository;
 import com.amrit.app.repo.ProductRepository.MyView;
+import com.amrit.app.repo.ProductRepository.MyViewTwo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -30,7 +31,12 @@ public class MyRunner implements CommandLineRunner {
         );
         repo.saveAll(list);
 
-        List<MyView> b = repo.findByProductCode("B");
-        b.forEach(p-> System.out.println(p.getProductId() + " " + p.getProductCode()+ p.getProductName()));
+        //Dynamic Projection
+        List<MyViewTwo> b = repo.findByProductCode("B", MyViewTwo.class);
+        b.forEach(p-> System.out.println(p.getProductName() + " " + p.getProductPrice()));
+
+        //OR
+        List<MyView> c = repo.findByProductCode("B");
+        c.forEach(p-> System.out.println(p.getProductName() + " " + p.getProductCode()));
     }
 }
