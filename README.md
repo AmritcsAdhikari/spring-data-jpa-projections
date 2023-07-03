@@ -16,14 +16,9 @@ interface.
 
 `Step 3:` Use that child Interface as ReturnType for findBy() findBy methods.
 
-
+### Eaxmple `static-interface branch` 
 
 `main` branch - 
 
 Query - `select p1_0.product_id,p1_0.product_code,p1_0.product_name,p1_0.product_price from product p1_0 where p1_0.product_code=?`
 
----
-
-`static-interface` branch - 
-
-Query - `select p1_0.product_id,p1_0.product_name,p1_0.product_code from product p1_0 where p1_0.product_code=?`
